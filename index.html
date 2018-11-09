@@ -2,7 +2,7 @@
 <html>
   <body>
     <input type="text" name="token" id="token" />
-    <button onclick="runTest()">Test</button>
+    <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span>
   </body>
   <script>
@@ -14,7 +14,7 @@
       const autostartToken = document.getElementById('token').value;
       const starturl = 'bankid:///?autostartToken=' + autostartToken + '%redirect=' + redirectUrl;
       
-      document.getElementById('starturl').innerHtml = starturl;
+      document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
     }
