@@ -13,7 +13,7 @@
       redirectUrl = isChrome ? redirectUrl.replace('http', 'googlechrome') : redirectUrl; // will be correct for https
       
       const autostartToken = document.getElementById('token').value;
-      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodeURI(redirectUrl);
+      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodeURIComponent(redirectUrl);
       
       document.getElementById('starturl').innerHTML = starturl;
       
