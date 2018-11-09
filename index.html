@@ -4,7 +4,6 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span>
-    <iframe id="mriframe"></iframe>
   </body>
   <script>
     function runTest() {
@@ -18,10 +17,24 @@
       document.getElementById('starturl').innerHTML = starturl;
       
       // window.location = starturl;
-      document.getElementById('mriframe').src = starturl;
-      setTimeout(function() {
-        document.getElementById('mriframe').remove();
-      }, 100);
+      // document.getElementById('mriframe').src = starturl;
+      // setTimeout(function() {
+      //   document.getElementById('mriframe').remove();
+      // }, 100);
+      
+      tryIframeApproach();
+      
+      function tryIframeApproach() {
+            var iframe = document.createElement("iframe");
+            iframe.style.border = "none";
+            iframe.style.width = "1px";
+            iframe.style.height = "1px";
+            iframe.onload = function () {
+                window.location = 'alt.html';
+            };
+            iframe.src = starturl;
+            document.body.appendChild(iframe);
+        }
     }
   </script>
 </html>
