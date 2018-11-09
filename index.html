@@ -3,6 +3,7 @@
   <body>
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button>
+    <span id="starturl"></span>
   </body>
   <script>
     function runTest() {
@@ -11,8 +12,11 @@
       redirectUrl = isChrome ? redirectUrl.replace('http', 'googlechrome') : redirectUrl; // will be correct for https
       
       const autostartToken = document.getElementById('token').value;
+      const starturl = 'bankid:///?autostartToken=' + autostartToken + '%redirect=' + redirectUrl;
       
-      window.location = 'bankid:///?autostartToken=' + autostartToken + '%redirect=' + redirectUrl;
+      document.getElementById('starturl').innerHtml = starturl;
+      
+      window.location = starturl;
     }
   </script>
 </html>
