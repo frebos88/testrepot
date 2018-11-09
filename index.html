@@ -4,7 +4,7 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v3</span>
+    <span>v4</span>
   </body>
   <script>
     function runTest() {
@@ -13,7 +13,7 @@
       redirectUrl = isChrome ? redirectUrl.replace('http', 'googlechrome') : redirectUrl; // will be correct for https
       
       const autostartToken = document.getElementById('token').value;
-      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=null';// + redirectUrl;
+      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodeURI(redirectUrl);
       
       document.getElementById('starturl').innerHTML = starturl;
       
