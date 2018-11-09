@@ -22,7 +22,7 @@
       });
       
       const autostartToken = document.getElementById('token').value;
-      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl);
+      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
