@@ -4,12 +4,12 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v10</span><br/>
+    <span>v11</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span>
   </body>
   <script>
-    const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    const isChrome = ((/CriOS/i.test(navigator.userAgent) && /iphone|ipod|ipad/i.test(navigator.userAgent)) || /Chrome/i.test(navigator.userAgent));
     document.getElementById('isChrome').innerHTML = 'isChrome?' + isChrome.toString();
     document.getElementById('userAgent').innerHTML = navigator.userAgent;
     
