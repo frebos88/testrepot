@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <input type="text" name="token" id="token" />
+    <button onclick="runTest()">Test</button>
+  </body>
+  <script>
+    function runTest() {
+      const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') !== -1;
+      let redirectUrl = window.location.href;
+      redirectUrl = isChrome ? redirectUrl.replace('http', 'googlechrome') : redirectUrl; // will be correct for https
+      
+      const autostartToken = document.getElementById('token').value;
+      
+      window.location = 'bankid:///?autostartToken=' + autostartToken + '%redirect=' + redirectUrl;
+    }
+  </script>
+</html>
