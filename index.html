@@ -4,19 +4,18 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v8</span><br/>
+    <span>v9</span><br/>
     <span id="isChrome"></span>
   </body>
   <script>
+    const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+    document.getElementById('isChrome').innerHTML = 'isChrome?' + isChrome.toString();
     function runTest() {
-      const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') !== -1;
       let redirectUrl = window.location.href;
       redirectUrl = isChrome ? redirectUrl.replace('http', 'googlechrome') : redirectUrl; // will be correct for https
       
       const autostartToken = document.getElementById('token').value;
       const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodeURIComponent(redirectUrl);
-      
-      document.getElementById('isChrome').innerHTML = 'isChrome?' + isChrome.toString();
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
