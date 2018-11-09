@@ -4,7 +4,8 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v7</span>
+    <span>v8</span><br/>
+    <span id="isChrome"></span>
   </body>
   <script>
     function runTest() {
@@ -15,6 +16,7 @@
       const autostartToken = document.getElementById('token').value;
       const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodeURIComponent(redirectUrl);
       
+      document.getElementById('isChrome').innerHTML = 'isChrome?' + isChrome.toString();
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
