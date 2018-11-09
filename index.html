@@ -4,12 +4,15 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v9</span><br/>
-    <span id="isChrome"></span>
+    <span>v10</span><br/>
+    <span id="isChrome"></span><br/>
+    <span id="userAgent"></span>
   </body>
   <script>
     const isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
     document.getElementById('isChrome').innerHTML = 'isChrome?' + isChrome.toString();
+    document.getElementById('userAgent').innerHTML = navigator.userAgent;
+    
     function runTest() {
       let redirectUrl = window.location.href;
       redirectUrl = isChrome ? redirectUrl.replace('http', 'googlechrome') : redirectUrl; // will be correct for https
