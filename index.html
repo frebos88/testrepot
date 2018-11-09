@@ -4,7 +4,7 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v12</span><br/>
+    <span>v13</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span>
   </body>
@@ -17,15 +17,27 @@
       let redirectUrl = window.location.href;
       redirectUrl = isChrome ? redirectUrl.replace('http', 'googlechrome') : redirectUrl; // will be correct for https
       
-      const encodedRedirectUrl = encodeURIComponent(redirectUrl).replace(/%([0-9])([A-Z])/g, function(match, p1, p2) {
-        return '%' + p1 + p2.toLowerCase();
-      });
+      // const encodedRedirectUrl = encodeURIComponent(redirectUrl).replace(/%([0-9])([A-Z])/g, function(match, p1, p2) {
+      //   return '%' + p1 + p2.toLowerCase();
+      // });
+      const encodedRedirectUrl = encodeRedirectUrl(true, false);
       
       const autostartToken = document.getElementById('token').value;
       const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
+    }
+    
+    function encodeRedirectUrl(n, t) {
+          if (!n) return "null";
+      
+            var a = window.navigator.userAgent
+              , r = window.location
+              , l = r.href
+              , i = r.pathname
+              , o = r.protocol;
+            return t ? i : a.includes("CriOS") ? encodeURIComponent("googlechromes://" + l.replace(o, "")) : a.includes("FxiOS") ? encodeURIComponent("firefox://" + l.replace(o, "")) : encodeURIComponent(l)
     }
   </script>
 </html>
