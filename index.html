@@ -4,7 +4,7 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v18</span><br/>
+    <span>v19</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span>
   </body>
@@ -24,7 +24,7 @@
       
       const autostartToken = document.getElementById('token').value;
       let starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
-      starturl += /iphone|ipod|ipad/i.test(navigator.userAgent) ? '#bankid' : '';
+      starturl += (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) ? '#bankid' : '';
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
