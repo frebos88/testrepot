@@ -23,7 +23,7 @@
       const encodedRedirectUrl = encodeRedirectUrl(true, false);
       
       const autostartToken = document.getElementById('token').value;
-      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
+      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl + '#bankid';
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
@@ -37,7 +37,7 @@
               , l = r.href
               , i = r.pathname
               , o = r.protocol;
-            return t ? i : a.includes("CriOS") ? encodeURIComponent("googlechromes://" + l.replace(o, "")) + '#bankid' : a.includes("FxiOS") ? encodeURIComponent("firefox://" + l.replace(o, "")) : encodeURIComponent(l)
+            return t ? i : a.includes("CriOS") ? encodeURIComponent("googlechromes://" + l.replace(o, "")) : a.includes("FxiOS") ? encodeURIComponent("firefox://" + l.replace(o, "")) : encodeURIComponent(l)
     }
   </script>
 </html>
