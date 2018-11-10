@@ -24,7 +24,7 @@
       
       const autostartToken = document.getElementById('token').value;
       let starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
-      starturl += /iphone|ipod|ipad/i.test(navigator.userAgent)) ? '#bankid' : '';
+      starturl += /iphone|ipod|ipad/i.test(navigator.userAgent) ? '#bankid' : '';
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
