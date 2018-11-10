@@ -4,7 +4,7 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v20</span><br/>
+    <span>v21</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span>
   </body>
@@ -23,8 +23,8 @@
       const encodedRedirectUrl = encodeRedirectUrl(true, false);
       
       const autostartToken = document.getElementById('token').value;
-      let starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
-      starturl += (navigator.userAgent.match(/(iPod|iPhone|iPad)/) && navigator.userAgent.match(/AppleWebKit/)) ? '#bankid' : '';
+      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
+      
       document.getElementById('starturl').innerHTML = starturl;
       
       window.location = starturl;
@@ -38,7 +38,7 @@
               , l = r.href
               , i = r.pathname
               , o = r.protocol;
-            return t ? i : a.includes("CriOS") ? encodeURIComponent(l.replace('http', 'googlechrome://http')) : a.includes("FxiOS") ? encodeURIComponent("firefox://" + l.replace(o, "")) : encodeURIComponent(l)
+            return t ? i : a.includes("CriOS") ? encodeURIComponent(l.replace('http', 'googlechrome://http')) : a.includes("FxiOS") ? encodeURIComponent("firefox://" + l.replace(o, "")) : encodeURIComponent(l) + '#bankid'
     }
   </script>
 </html>
