@@ -4,7 +4,7 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v21</span><br/>
+    <span>v22</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span>
   </body>
@@ -38,7 +38,7 @@
               , l = r.href
               , i = r.pathname
               , o = r.protocol;
-            return t ? i : a.includes("CriOS") ? encodeURIComponent(l.replace('http', 'googlechrome://http')) : a.includes("FxiOS") ? encodeURIComponent("firefox://" + l.replace(o, "")) : encodeURIComponent(l) + '#bankid'
+            return t ? i : a.includes("CriOS") ? encodeURIComponent(l.replace('http', 'googlechrome')) : a.includes("FxiOS") ? encodeURIComponent("firefox://" + l.replace(o, "")) : encodeURIComponent(l) + '#bankid'
     }
   </script>
 </html>
