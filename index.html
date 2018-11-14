@@ -4,10 +4,14 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v24</span><br/>
+    <span>v25</span><br/>
     <span id="isChrome"></span><br/>
-    <span id="userAgent"></span>
-    <span id="theOnLoadDiv">no onload yet</div>
+    <span id="userAgent"></span><br/>
+    <span id="theOnLoadDiv"></div><br/>
+    <span id="theResumeDiv"></div><br/>
+    <span id="theFocusDiv"></div><br/>
+    <span id="theFocusInDiv"></div><br/>
+    <span id="theVisibilityChangeDiv"></div><br/>
   </body>
   <script>
     const isChrome = ((/CriOS/i.test(navigator.userAgent) && /iphone|ipod|ipad/i.test(navigator.userAgent)) || /Chrome/i.test(navigator.userAgent));
@@ -36,6 +40,11 @@
       window.onload = function() {
         document.getElementById('theOnLoadDiv').innerHTML = 'onload was called!';
       }
+      
+      document.addEventListener(‘resume’, function() { document.getElementById('theResumeDiv').innerHTML = 'resume was called!'; }, false);
+      document.addEventListener(‘focus’, function() { document.getElementById('theFocusDiv').innerHTML = 'focus was called!'; }, false);
+      document.addEventListener(‘focusin’, function() { document.getElementById('theFocusInDiv').innerHTML = 'focusin was called!'; }, false);
+      document.addEventListener(‘visibilitychange’, function() { document.getElementById('theVisibilityChangeDiv').innerHTML = 'visibilitychange was called!'; }, false);
       
       window.location = starturl;
     }
