@@ -4,9 +4,10 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v23</span><br/>
+    <span>v24</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span>
+    <span id="theOnLoadDiv">no onload yet</div>
   </body>
   <script>
     const isChrome = ((/CriOS/i.test(navigator.userAgent) && /iphone|ipod|ipad/i.test(navigator.userAgent)) || /Chrome/i.test(navigator.userAgent));
@@ -31,6 +32,10 @@
       const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
       
       document.getElementById('starturl').innerHTML = starturl;
+    
+      window.onload = function() {
+        document.getElementById('theOnLoadDiv').innerHTML = 'onload was called!';
+      }
       
       window.location = starturl;
     }
