@@ -4,7 +4,7 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v26</span><br/>
+    <span>v27</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span><br/>
     <span id="theOnLoadDiv"></div><br/>
@@ -25,6 +25,11 @@
       // const encodedRedirectUrl = encodeURIComponent(redirectUrl).replace(/%([0-9])([A-Z])/g, function(match, p1, p2) {
       //   return '%' + p1 + p2.toLowerCase();
       // });
+      
+      window.history.pushState('', document.title, window.location.pathname + window.location.search);
+      // redirect = redirect || $window.location.href;
+      // redirect += '#bankid';
+      
       let encodedRedirectUrl = encodeRedirectUrl(true, false);
       
       const autostartToken = document.getElementById('token').value;
@@ -33,7 +38,7 @@
         encodedRedirectUrl = window.location.protocol.replace('http', 'googlechrome') + '//';
       }
 
-      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl.replace('%23bankid', '');
+      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
       
       document.getElementById('starturl').innerHTML = starturl;
     
