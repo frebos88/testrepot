@@ -4,7 +4,7 @@
     <input type="text" name="token" id="token" />
     <button onclick="runTest()">Test</button><br/>
     <span id="starturl"></span><br/>
-    <span>v25</span><br/>
+    <span>v26</span><br/>
     <span id="isChrome"></span><br/>
     <span id="userAgent"></span><br/>
     <span id="theOnLoadDiv"></div><br/>
@@ -33,7 +33,7 @@
         encodedRedirectUrl = window.location.protocol.replace('http', 'googlechrome') + '//';
       }
 
-      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl;
+      const starturl = 'bankid:///?autostarttoken=' + autostartToken + '&redirect=' + encodedRedirectUrl.replace('%23bankid', '');
       
       document.getElementById('starturl').innerHTML = starturl;
     
