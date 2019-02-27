@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WC</title>
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
+    <script>
+      class WCBox extends HTMLElement {
+        constructor() {
+            super();
+
+			      this.counter = 0;
+
+            const shadowRoot = this.attachShadow({mode: 'open'});
+
+            const div = document.createElement('div');
+            const style = document.createElement('style');
+
+            div.addEventListener('click', evt => {
+                evt.preventDefault();
+
+                this.counter++;
+          			div.innerHTML = `${this.template}<p>${this.counter} clicks</p>`;
+            });
+
+            this.template = `
+                <p>I am a delightful div!</p>
+            `;
+
+            div.innerHTML = this.template;
+
+            style.textContent = `
+                div {
+                    background: #ffae12;
+                    padding: 16px;
+                    font-size: 0.875rem;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    border: none;
+                }
+            `;
+
+            shadowRoot.appendChild(style);
+            shadowRoot.appendChild(div);
+        }
+    }
+
+    window.customElements.define('wc-box', WCBox);
+    </script>
+  </head>
+
+  <body>
+    v1
+    <wc-box/>
+  </body>
+</html>
