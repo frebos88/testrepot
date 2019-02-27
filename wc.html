@@ -7,8 +7,7 @@
       class WCBox extends HTMLElement {
         constructor() {
             super();
-
-			      this.counter = 0;
+            this.counter = 0;
 
             const shadowRoot = this.attachShadow({mode: 'open'});
 
@@ -19,7 +18,7 @@
                 evt.preventDefault();
 
                 this.counter++;
-          			div.innerHTML = `${this.template}<p>${this.counter} clicks</p>`;
+                div.innerHTML = `${this.template}<p>${this.counter} clicks</p>`;
             });
 
             this.template = `
