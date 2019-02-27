@@ -2,44 +2,63 @@
 <html lang="en">
   <head>
     <title>WC</title>
-    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
+    <script>
+      if (location.search.indexOf('poly') > -1) {
+        var head = document.getElementsByTagName('head')[0];
+        var js = document.createElement('script');
+        js.src = 'https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js';
+        head.appendChild(js);
+      }
+    </script>
     <script>
       class WCBox extends HTMLElement {
         constructor() {
             super();
-            this.counter = 0;
+        }
 
-            const shadowRoot = this.attachShadow({mode: 'open'});
+        connectedCallback() {
+          this.counter = 0;
 
-            const div = document.createElement('div');
-            const style = document.createElement('style');
+          // If you want to test without a shadow root
+          let shadowRoot;
+          if (location.search.indexOf('noshadow') > -1) {
+            shadowRoot = document.getElementsByTagName('wc-box')[0];
+          } else {
+            shadowRoot = this.attachShadow({mode: 'open'});
+          }
 
-            div.addEventListener('click', evt => {
-                evt.preventDefault();
+          const div = document.createElement('div');
+          const style = document.createElement('style');
 
-                this.counter++;
-                div.innerHTML = `${this.template}<p>${this.counter} clicks</p>`;
-            });
+          div.addEventListener('click', evt => {
+              evt.preventDefault();
 
-            this.template = `
-                <p>I am a delightful div!</p>
-            `;
+              this.counter++;
+              div.innerHTML = `${this.template}<p>${this.counter} clicks</p>`;
+          });
 
-            div.innerHTML = this.template;
+          this.template = `
+              <p>I am a delightful div!</p>
+          `;
 
-            style.textContent = `
-                div {
-                    background: #ffae12;
-                    padding: 16px;
-                    font-size: 0.875rem;
-                    cursor: pointer;
-                    border-radius: 3px;
-                    border: none;
-                }
-            `;
+          div.innerHTML = this.template;
 
-            shadowRoot.appendChild(style);
-            shadowRoot.appendChild(div);
+          style.textContent = `
+              body {
+                background: #eee; // Does it bleed?
+              }
+              div {
+                  background: #ffae12;
+                  padding: 16px;
+                  font-size: 0.875rem;
+                  cursor: pointer;
+                  border-radius: 3px;
+                  border: none;
+              }
+          `;
+
+          shadowRoot.appendChild(style);
+          shadowRoot.appendChild(div);
         }
     }
 
